@@ -1,0 +1,117 @@
+.log-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.log-summary {
+  display: flex;
+  justify-content: space-between;
+  background-color: #E3EBF5; /* Nhạt hơn Light blue */
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #2A4A73; /* Nhạt hơn Bedazzled Blue */
+}
+
+.summary-value {
+  font-size: 1.1em;
+  color: #6B8CAE; /* Nhạt hơn Lighter blue */
+}
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: #D64550; /* Nhạt hơn Burnt Sienna Orange */
+}
+
+.timeline-item {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.timeline-content {
+  margin-left: 40px;
+  background: #F8FAFC; /* Nhạt hơn Light background color */
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: #D64550; /* Nhạt hơn Burnt Sienna Orange */
+  border-radius: 50%;
+}
+
+.captured-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.explanation {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #2A4A73; /* Nhạt hơn Bedazzled Blue */
+  margin-bottom: 8px;
+}
+
+.action-time {
+  color: #6B8CAE; /* Nhạt hơn Lighter blue */
+  font-size: 13px;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary {
+  background-color: #6B8CAE; /* Nhạt hơn Lighter blue */
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #2A4A73; /* Nhạt hơn Bedazzled Blue */
+}
+
+.timeline-item.highlighted {
+  background-color: rgba(255, 255, 0, 0.1);
+  border-left: 3px solid #ffd700;
+}
+
+.explanation.highlighted-text {
+  font-weight: bold;
+  color: #d64550;
+}

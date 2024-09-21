@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchResults from './SearchResults';
 import LogDetails from './LogDetails';
 import './App.css'; // Tạo file này để thêm các styles tùy chỉnh
+import ErrorLogVisualization from './ErrorLogVisualization';
 
 function App() {
   const [searchParams, setSearchParams] = useState({ business: '', action: '' });
@@ -35,13 +36,19 @@ function App() {
         <h1>ログ検索システム</h1>
       </header>
       
-      <nav className="app-nav">
-        <button onClick={() => setActiveTab('search')} className={activeTab === 'search' ? 'active' : ''}>
-          ログ検索
-        </button>
-        <button onClick={() => setActiveTab('errorLogs')} className={activeTab === 'errorLogs' ? 'active' : ''}>
-          エラーログ
-        </button>
+      <nav className="app-nav mb-4">
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
+            <button onClick={() => setActiveTab('search')} className={`nav-link ${activeTab === 'search' ? 'active' : ''}`}>
+              ログ検索
+            </button>
+          </li>
+          <li className="nav-item">
+            <button onClick={() => setActiveTab('errorLogs')} className={`nav-link ${activeTab === 'errorLogs' ? 'active' : ''}`}>
+              エラーログ
+            </button>
+          </li>
+        </ul>
       </nav>
 
       <main className="app-main">

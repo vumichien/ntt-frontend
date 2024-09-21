@@ -1,4 +1,4 @@
-  {
+{
   "name": "myfrontend",
   "version": "0.1.0",
   "private": true,
@@ -12,9 +12,11 @@
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-chartjs-2": "^5.2.0",
+    "react-digraph": "^9.1.2",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-zoom-pan-pinch": "^3.6.1",
+    "reactflow": "^11.11.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

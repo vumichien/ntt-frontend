@@ -1,0 +1,68 @@
+.chart-container {
+  flex: 1;
+  position: relative;
+  height: 300px;
+}
+
+.pie-container {
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.chart-card {
+  width: 100%;
+  min-height: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.chart-card h2 {
+  margin-bottom: 15px;
+  color: #2A4A73;
+}
+
+.chart-card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.table th {
+  white-space: nowrap;
+}
+
+.table td {
+  white-space: pre-wrap;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination .page-item .page-link {
+  color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff; /* Ensure the text color is white */
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+}
+
+.small-font-table {
+  font-size: 0.9rem;
+}

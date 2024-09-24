@@ -53,40 +53,6 @@
   background-color: #B83B45; /* Nhạt hơn Darker Burnt Sienna */
 }
 
-.chart-container {
-  flex: 1;
-  position: relative;
-  height: 300px;
-}
-
-.pie-container {
-  height: 600px;
-  width: 600px;
-  margin: 0 auto;
-}
-
-.chart-card {
-  width: 100%;
-  min-height: 600px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.chart-card h2 {
-  margin-bottom: 15px;
-  color: #2A4A73;
-}
-
-.small-font-table {
-  font-size: 0.9rem;
-}
-
 .error-log-details .react-flow__node {
   padding: 10px;
   border-radius: 5px;

@@ -249,7 +249,7 @@ function ErrorLogDetails() {
           onClick={handleBack} 
           disabled={currentIndex === 0}
         >
-          戻る
+          前へ
         </button>
         <button 
           className={`btn ${currentIndex === errorDetails.length - 1 ? 'btn-secondary' : 'btn-primary'}`} 

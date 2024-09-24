@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Bar, Pie, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, RadialLinearScale, PointElement, LineElement, Filler } from 'chart.js';
 import ErrorLogDetails from './ErrorLogDetails';
+import Pagination from './Pagination';
+import './ErrorLogVisualization.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, RadialLinearScale, PointElement, LineElement, Filler);
 
@@ -37,11 +39,15 @@ function ErrorLogVisualization() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
   const [errorTypeChartType, setErrorTypeChartType] = useState('bar');
+  const [summarizedErrorLogs, setSummarizedErrorLogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 10;
 
   useEffect(() => {
     fetchErrorTypeData();
     fetchUserErrorData();
     fetchUsers();
+    fetchSummarizedErrorLogs();
   }, []);
 
   useEffect(() => {
@@ -117,12 +123,26 @@ function ErrorLogVisualization() {
     }
   };
 
+  const fetchSummarizedErrorLogs = async () => {
+    try {
+      const response = await fetch('/api/summarized_error_logs/');
+      const data = await response.json();
+      setSummarizedErrorLogs(data);
+    } catch (error) {
+      console.error('Error fetching summarized error logs:', error);
+    }
+  };
+
   const handleUserChange = (event) => {
     setSelectedUser(event.target.value);
   };
 
   const handleChartTypeChange = (event) => {
     setErrorTypeChartType(event.target.value);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   const baseOptions = {
@@ -237,6 +257,13 @@ function ErrorLogVisualization() {
     ].slice(0, count);
   };
 
+  // Pagination logic
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const sortedErrorLogs = summarizedErrorLogs.sort((a, b) => a.error_type.localeCompare(b.error_type));
+  const currentRecords = sortedErrorLogs.slice(indexOfFirstRecord, indexOfLastRecord);
+  const totalPages = Math.ceil(summarizedErrorLogs.length / recordsPerPage);
+
   return (
     <div className="error-log-visualization">
       <div className="row">
@@ -276,6 +303,38 @@ function ErrorLogVisualization() {
                 )
               )}
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="row mt-4">
+        <div className="col-12">
+          <div className="chart-card">
+            <h4>エラー種別統計</h4>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>エラー種別</th>
+                  <th>発生件数</th>
+                  <th>エラー発生前の操作手順</th>
+                  <th>ユーザーID</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentRecords.map((log, index) => (
+                  <tr key={index}>
+                    <td>{log.error_type}</td>
+                    <td>{log.total_occurrences}件</td>
+                    <td>{log.actions_before_error.split(',').join(' ⇒ ')}</td>
+                    <td>{log.user_ids}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </div>
         </div>
       </div>

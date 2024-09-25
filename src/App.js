@@ -30,6 +30,38 @@ function App() {
 
   const handleLogDetails = (logId) => setSelectedLogId(logId);
 
+  // Function to handle importing log via process-logs API
+  const handleImportLog = () => {
+    fetch('http://127.0.0.1:8000/api/process-logs/', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Log import successful:', data);
+        alert('ログのインポートに成功しました。');
+      })
+      .catch(error => {
+        console.error('Error importing log:', error);
+        alert('ログのインポートに失敗しました。');
+      });
+  };
+
+  // Function to handle importing error log via import-error-log API
+  const handleImportErrorLog = () => {
+    fetch('http://127.0.0.1:8000/api/import-error-log/', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Error log import successful:', data);
+        alert('エラーログのインポートに成功しました。');
+      })
+      .catch(error => {
+        console.error('Error importing error log:', error);
+        alert('エラーログのインポートに失敗しました。');
+      });
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -55,30 +87,37 @@ function App() {
         {activeTab === 'search' ? (
           !selectedLogId ? (
             <>
-              <form onSubmit={handleSearch} className="search-container">
-                <input 
-                  type="text" 
-                  className="search-input"
-                  placeholder="業務"
-                  name="business"
-                  value={searchParams.business}
-                  onChange={handleInputChange}
-                />
-                <input 
-                  type="text" 
-                  className="search-input"
-                  placeholder="操作"
-                  name="action"
-                  value={searchParams.action}
-                  onChange={handleInputChange}
-                />
-                <button 
-                  type="submit"
-                  className="search-button"
-                >
-                  検索
+                       <div className="search-row">
+                <form onSubmit={handleSearch} className="search-container">
+                  <input 
+                    type="text" 
+                    className="search-input"
+                    placeholder="業務"
+                    name="business"
+                    value={searchParams.business}
+                    onChange={handleInputChange}
+                  />
+                  <input 
+                    type="text" 
+                    className="search-input"
+                    placeholder="操作"
+                    name="action"
+                    value={searchParams.action}
+                    onChange={handleInputChange}
+                  />
+                  <button 
+                    type="submit"
+                    className="search-button"
+                  >
+                    検索
+                  </button>
+                </form>
+
+                {/* Button to Import Log */}
+                <button onClick={handleImportLog} className="btn btn-primary import-button">
+                  ログのインポート
                 </button>
-              </form>
+              </div>
 
               <SearchResults results={searchResults} onLogDetails={handleLogDetails} />
             </>
@@ -86,7 +125,16 @@ function App() {
             <LogDetails logId={selectedLogId} onBack={() => setSelectedLogId(null)} searchAction={searchParams.action} />
           )
         ) : (
-          <ErrorLogVisualization />
+          <>
+          {/* Button to Import Error Log */}
+          <div className="import-error-container">
+              <button onClick={handleImportErrorLog} className="btn btn-primary import-button">
+                エラーログのインポート
+              </button>
+            </div>
+            <ErrorLogVisualization />
+          
+          </>
         )}
       </main>
     </div>

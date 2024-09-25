@@ -1,13 +1,15 @@
 .chart-container {
   flex: 1;
   position: relative;
-  height: 300px;
+  height: 100%; /* Let it scale based on the parent container */
+  width: 100%;  /* Ensure full width of the parent */
 }
 
 .pie-container {
-  height: 600px;
-  width: 600px;
-  margin: 0 auto;
+  height: auto;  /* Make height flexible */
+  width: 100%;   /* Set the width to 100% of the available container */
+  max-width: 600px;  /* Optional: You can set a max-width to prevent overly large charts */
+  margin: 0 auto;    /* Center the chart */
 }
 
 .chart-card {
@@ -65,4 +67,10 @@
 
 .small-font-table {
   font-size: 0.9rem;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: row; 
+  gap: 10px; 
 }

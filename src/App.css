@@ -24,10 +24,18 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Styles for aligning the search bar and buttons */
+.search-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .search-container {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  align-items: center;
 }
 
 .search-input {
@@ -40,7 +48,7 @@
 
 .search-button {
   padding: 10px 16px;
-  background-color: #D64550; /* Nhạt hơn Burnt Sienna Orange */
+  background-color: #0d6efd; /* Nhạt hơn Burnt Sienna Orange */
   color: white;
   border: none;
   border-radius: 4px;
@@ -50,7 +58,7 @@
 }
 
 .search-button:hover {
-  background-color: #B83B45; /* Nhạt hơn Darker Burnt Sienna */
+  background-color: #0b5ed7; /* Nhạt hơn Darker Burnt Sienna */
 }
 
 .error-log-details .react-flow__node {
@@ -66,4 +74,16 @@
 
 .error-log-details .react-flow__edge-text {
   font-size: 12px;
+}
+
+.import-button {
+  height: 100%;
+  white-space: nowrap; 
+}
+
+/* Error log import button container */
+.import-error-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }

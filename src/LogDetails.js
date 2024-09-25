@@ -25,7 +25,7 @@ function LogDetails({ logId, onBack, searchAction }) {
 
   return (
     <div className="log-details">
-      <button className="btn btn-secondary mb-3" onClick={onBack}>前へ</button>
+      <button className="btn btn-secondary mb-3" onClick={onBack}>戻る</button>
       <div className="log-summary">
         <div className="summary-item">
           <span className="summary-label">操作数:</span>

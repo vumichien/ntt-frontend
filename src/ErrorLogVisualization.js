@@ -270,10 +270,30 @@ function ErrorLogVisualization() {
         <div className="col-md-6">
           <div className="chart-card">
             <h4>エラータイプ統計</h4>
-            <select value={errorTypeChartType} onChange={handleChartTypeChange} className="form-select mb-3">
-              <option value="bar">バーグラフ</option>
-              <option value="pie">円グラフ</option>
-            </select>
+            <div className="radio-group mb-4">
+            <div className="form-check form-check-inline">
+              <input
+                type="radio"
+                className="form-check-input"
+                id="barChart"
+                value="bar"
+                checked={errorTypeChartType === 'bar'}
+                onChange={handleChartTypeChange}
+              />
+              <label className="form-check-label" htmlFor="barChart">バーグラフ</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                type="radio"
+                className="form-check-input"
+                id="pieChart"
+                value="pie"
+                checked={errorTypeChartType === 'pie'}
+                onChange={handleChartTypeChange}
+              />
+              <label className="form-check-label" htmlFor="pieChart">円グラフ</label>
+            </div>
+            </div>
             <div className={`chart-container ${errorTypeChartType === 'pie' ? 'pie-container' : ''}`}>
               {errorTypeData && (
                 errorTypeChartType === 'bar' ? (
